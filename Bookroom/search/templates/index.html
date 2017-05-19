@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎使用图书馆系统</title>
+    <style>
+        td {
+            width: 100px;
+
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="gongao">
+        <marquee style="background-color: deepskyblue">asdasdasd</marquee>
+    </div>
+    <table>
+        <tr>
+            <td>标题</td>
+            <td>出版社</td>
+            <td>作者</td>
+            <td>更新时间</td>
+
+        </tr>
+      {% for i in data %}
+        <tr>
+            <td>{{ i.title }} </td>
+        <td>{{ i.publisher }}</td>
+        <td>{{ i.author }}</td>
+        <td>{{ i.update_time }}</td>
+
+
+        </tr>
+
+       {% endfor %}
+
+
+    </table>
+
+
+</body>
+</html>

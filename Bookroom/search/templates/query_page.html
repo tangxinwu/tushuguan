@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"  type="text/css" href="/static/bootstrap.min.css">
+    <link rel="stylesheet"  type="text/css" href="/static/tablecloth.css">
+    <script src="/static/jquery-3.1.1.min.js"></script>
+
+    <script>
+        function get_info(main_id) {
+            if ($('#' + main_id).is(':visible')){
+                $('#' + main_id).hide();
+
+            }else {
+                $('#' + main_id).show();
+            }
+
+            $.getJSON('/index/query_mainverlist?id=' + main_id, function (result) {
+                        $('#' + main_id).empty();
+                        $.each(result,function (k,v) {
+
+                            $('#' + main_id).append('<li>' + k  + '-----' + v + '</li>' +  '<br>');
+
+                        })
+                    }
+
+            )
+        }
+
+    </script>
+</head>
+<body>
+    <form>
+
+         <table>
+             <tr>
+                 <th>id</th>
+                 <th>中文名</th>
+             </tr>
+             {% for k,v in main_data.items %}
+             <tr onclick="var main_id = {{ k }};get_info(main_id);">
+                 <td>{{ k }}</td>
+                 <td>{{ v }}</td>
+                 <tr id="{{ k }}">
+
+                 </tr>
+             </tr>
+             {% endfor %}
+             <p>
+
+
+
+
+             </p>
+         </table>
+
+    </form>
+</body>
+</html>
